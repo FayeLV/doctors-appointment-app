@@ -25,8 +25,6 @@ Installation
 
 Clone the repository:
 
-git clone https://github.com/FayeLV/doctors-appointment-app.git
-cd doctors-appointment-app
 
 Setup backend:
 
