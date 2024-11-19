@@ -9,8 +9,7 @@ const ServiceCard = ({ item }) => {
     return (
         <div className="py-[30px] px-3 lg:px-5">
             <div className="w-full mx-auto p-3 lg:p-5">
-                <div className="doctor_pic w-full h-[400px] flex justify-center overflow-hidden rounded-lg"> {/* 设置固定高度 */}
-                    <img src={photo} alt="" className="w-full h-full object-cover" /> {/* 确保图片占满容器 */}
+                <div className="doctor_pic w-full h-[400px] flex justify-center overflow-hidden rounded-lg">
                 </div>
 
                 <h2 className="text-[18px] leading-[30px] lg:text-[26px] lg:leading-9 text-headingColor font-[700] mt-4">{name}</h2>

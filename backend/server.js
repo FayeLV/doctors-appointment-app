@@ -42,7 +42,9 @@ app.use(cookieParser())
 app.use(cors(corsOptions))
 
 app.use('/api/v1/auth',router);
-app.use('/api/v1/users',userRouter);
+console.log('User router loaded');
+
+app.use('/api/v1/users', userRouter);
 app.use('/api/v1/doctors',doctorRouter);
 app.use('/api/v1/reviews',reviewRouter);
 

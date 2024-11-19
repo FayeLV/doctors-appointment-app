@@ -4,7 +4,8 @@ import {protect,restrict} from '../middleware/authMiddleware.js'
 
 const userRouter = express.Router()
 
-userRouter.get('/',protect,restrict(['patient']), getAllUsers)
+// userRouter.get('/',protect,restrict(['patient']), getAllUsers)
+userRouter.get('/', getAllUsers)
 userRouter.get('/:id',protect,restrict(['admin']), getUser)
 userRouter.put('/:id', restrict(['patient']),updateUser)
 userRouter.delete('/:id', restrict(['patient']),deleteUser)
