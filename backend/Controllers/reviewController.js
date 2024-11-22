@@ -47,12 +47,11 @@ export const createReview = asyncHandler(async (req, res) => {
 
         // Update the doctor's review list
         await Doctor.findByIdAndUpdate(req.body.doctor, {
-            $push: { reviews: savedReview._id }  // Assuming there is a reviews array in the doctor document
+            $push: { reviews: savedReview._id }  
         });
 
         return res.status(201).json({ success: true, message: "Review created successfully", data: savedReview });
     } catch (error) {
-        // Error handling
         return res.status(500).json({ success: false, message: "Server error", error: error.message });
     }
 });

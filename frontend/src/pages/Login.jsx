@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { BASE_URL } from '../../config';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +25,7 @@ const Login = () => {
     const { email, password } = formData;
     if (!email || !password) {
       setError('Please fill in all fields');
+      toast.error('Please fill in all fields');
       return false;
     }
     setError('');
@@ -32,7 +36,7 @@ const Login = () => {
   const loginAPI = async (email, password) => {
     console.log('Sending login data:', { email, password });
 
-    const response = await fetch('http://localhost:5000/api/v1/auth/login', { 
+    const response = await fetch(`${BASE_URL}auth/login`, { 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -74,7 +78,7 @@ const Login = () => {
             role: response.role,
           }
         });
-        alert('Successfully logged in!');
+        toast.success('Successfully logged in!');  
         setLoading(false);
         navigate('/home'); 
       } else {
@@ -85,6 +89,7 @@ const Login = () => {
     } catch (err) {
       console.error('Login error:', err); 
       setError('Something went wrong. Please try again.');
+      toast.error('Something went wrong. Please try again.');
       setLoading(false);
       dispatch({ type: 'LOGIN_FAILURE' });
     }

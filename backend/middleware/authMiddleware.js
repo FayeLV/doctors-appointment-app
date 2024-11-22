@@ -59,7 +59,6 @@ export const restrict = (roles) => async (req, res, next) => {
         return res.status(401).json({ message: "You are not authorized" });
     }
 
-    // If user is authorized, proceed to the next middleware or route handler
     next();
 };
 

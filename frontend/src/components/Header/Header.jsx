@@ -5,7 +5,7 @@ import { useEffect,useRef,useContext} from 'react'
 import userImg from '../../assets/images/avatar-icon.png'
 import {BiMenu} from 'react-icons/bi'
 import { AuthContext } from '../../context/authContext'
-
+import Logout from '../Logout/Logout.jsx'
 
 const navLinks = [
   {path:'/home',display:'Home'},
@@ -62,21 +62,27 @@ const Header = () => {
 
         <div className="flex items-center gap-4">
           {
+            
             token && user ? (
-              <Link to={`${role === 'doctor' ? '/doctor/profile/me' : '/users/profile/me'}`}>
-                <div className="flex items-center gap-2">
-                  <div className="user-img w-[35px] h-[35px] rounded-full overflow-hidden">
-                    <img src={userImg} alt={user.name} className="w-full h-full object-cover" /> 
+              <>
+                <Link to={`${role === 'doctor' ? '/doctor/profile/me' : '/users/profile/me'}`}>
+                  <div className="flex items-center gap-2">
+                    <div className="user-img w-[35px] h-[35px] rounded-full overflow-hidden">
+                      <img src={userImg} alt={user.name} className="w-full h-full object-cover" /> 
+                    </div>
+                    <span>{user.name}</span> 
                   </div>
-                  <span>{user.name}</span> 
-                </div>
-              </Link>
+                </Link>
+                <Logout/>
+              </>
             ) : (
-              <Link to="/login">
-                <button className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-items-center rounded-[50px]">
-                  Login
-                </button>
+              <>
+                <Link to="/login">
+                  <button className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-items-center rounded-[50px]">
+                    Login
+                  </button>
               </Link>
+              </>
             )
           }
           <span className="md:hidden" onClick={toggleMenu}>
